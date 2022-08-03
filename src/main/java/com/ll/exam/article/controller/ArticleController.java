@@ -18,8 +18,4 @@ public class ArticleController {
     public void showList() {
         System.out.println(articleService);
     }
-
-    public ArticleService getArticleServiceForTest() {
-        return articleService;
-    }
 }
