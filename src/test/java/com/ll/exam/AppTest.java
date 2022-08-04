@@ -12,25 +12,25 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class AppTest {
     @Test
-    public void junit_assertThat(){
+    public void junit_assertThat() {
         int rs = 10 + 20;
 
         assertThat(rs).isEqualTo(30);
     }
 
     @Test
-    public void ioc__articleController(){
+    public void ioc__articleController() {
         ArticleController articleController = Container.getObj(ArticleController.class);
-
-        articleController.showList();
 
         assertThat(articleController).isNotNull();
     }
 
     @Test
-    public void ioc__articleController__싱글톤(){
+    public void ioc__articleController__싱글톤() {
         ArticleController articleController1 = Container.getObj(ArticleController.class);
         ArticleController articleController2 = Container.getObj(ArticleController.class);
 
@@ -38,14 +38,14 @@ public class AppTest {
     }
 
     @Test
-    public void ioc__homeController(){
+    public void ioc__homeController() {
         HomeController homeController = Container.getObj(HomeController.class);
 
         assertThat(homeController).isNotNull();
     }
 
     @Test
-    public void ioc__homeController__싱글톤(){
+    public void ioc__homeController__싱글톤() {
         HomeController homeController1 = Container.getObj(HomeController.class);
         HomeController homeController2 = Container.getObj(HomeController.class);
 
@@ -53,7 +53,7 @@ public class AppTest {
     }
 
     @Test
-    public void ioc__Controller들을_스캔하여_수집 (){
+    public void ioc__Controller들을_스캔하여_수집() {
         List<String> names = Container.getControllerNames();
 
         assertThat(names).contains("home");
@@ -61,14 +61,14 @@ public class AppTest {
     }
 
     @Test
-    public void ioc__articleService(){
+    public void ioc__articleService() {
         ArticleService articleService = Container.getObj(ArticleService.class);
 
         assertThat(articleService).isNotNull();
     }
 
     @Test
-    public void ioc__articleService__싱글톤(){
+    public void ioc__articleService__싱글톤() {
         ArticleService articleService1 = Container.getObj(ArticleService.class);
         ArticleService articleService2 = Container.getObj(ArticleService.class);
 
@@ -76,7 +76,7 @@ public class AppTest {
     }
 
     @Test
-    public void articleController를_생성할때_articleService도_같이_생성(){
+    public void articleController를_생성할때_articleService도_같이_생성() {
         ArticleController articleController = Container.getObj(ArticleController.class);
 
         ArticleService articleService = Ut.reflection.getFieldValue(articleController, "articleService", null);
@@ -85,7 +85,7 @@ public class AppTest {
     }
 
     @Test
-    public void articleService를_생성할때_articleRepository도_같이_생성(){
+    public void articleService를_생성할때_articleRepository도_같이_생성() {
         ArticleService articleService = Container.getObj(ArticleService.class);
 
         ArticleRepository articleRepository = Ut.reflection.getFieldValue(articleService, "articleRepository", null);
@@ -94,12 +94,12 @@ public class AppTest {
     }
 
     @Test
-    public void ControllerManager__scanMappings(){
-        ControllerManager.init();   // 클래스를 강제로 로딩되게 하려는 목적
+    public void ControllerManager__scanMappings() {
+        ControllerManager.init(); // 클래스를 강제로 로딩되게 하려는 목적
     }
 
     @Test
-    public void ControllerManager__라우트정보_개수(){
+    public void ControllerManager__라우트정보_개수() {
         Map<String, RouteInfo> routeInfos = ControllerManager.getRouteInfosForTest();
 
         assertThat(routeInfos.size()).isEqualTo(2);
