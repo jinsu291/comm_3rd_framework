@@ -2,8 +2,8 @@ package com.ll.exam;
 
 import com.ll.exam.article.controller.ArticleController;
 import com.ll.exam.home.controller.HomeController;
-import com.ll.exam.repository.ArticleRepository;
-import com.ll.exam.service.ArticleService;
+import com.ll.exam.article.repository.ArticleRepository;
+import com.ll.exam.article.service.ArticleService;
 import com.ll.exam.util.Ut;
 import org.junit.jupiter.api.Test;
 
@@ -102,6 +102,6 @@ public class AppTest {
     public void ControllerManager__라우트정보_개수() {
         Map<String, RouteInfo> routeInfos = ControllerManager.getRouteInfosForTest();
 
-        assertThat(routeInfos.size()).isEqualTo(2);
+        assertThat(routeInfos.size()).isEqualTo(4);
     }
 }
