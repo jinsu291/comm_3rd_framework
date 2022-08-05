@@ -16,20 +16,21 @@ public class Container {
         objects = new HashMap<>();
 
         scanComponents();
-        }
+    }
 
     private static void scanComponents() {
-        //전체 레고 생성
+        // 전체 레고 생성
         scanRepositories();
         scanServices();
         scanControllers();
-        
-        //레고 조립
+
+
+        // 레고 조립
         resolveDependenciesAllComponents();
     }
 
     private static void resolveDependenciesAllComponents() {
-        for(Class cls : objects.keySet()){
+        for (Class cls : objects.keySet()) {
             Object o = objects.get(cls);
 
             resolveDependencies(o);
@@ -51,6 +52,7 @@ public class Container {
                     try {
                         field.set(o, dependency);
                     } catch (IllegalAccessException e) {
+
                     }
                 });
     }
@@ -74,10 +76,10 @@ public class Container {
         for (Class<?> cls : ref.getTypesAnnotatedWith(Controller.class)) {
             objects.put(cls, Ut.cls.newObj(cls, null));
         }
-}
+    }
 
     public static <T> T getObj(Class<T> cls) {
-        return (T)objects.get(cls);
+        return (T) objects.get(cls);
     }
 
     public static List<String> getControllerNames() {

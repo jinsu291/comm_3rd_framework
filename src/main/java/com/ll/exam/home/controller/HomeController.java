@@ -7,7 +7,7 @@ import com.ll.exam.annotation.GetMapping;
 @Controller
 public class HomeController {
     @GetMapping("/usr/home/main")
-    public void showMain(Rq rq){
-        rq.println("메인페이지");
+    public void showMain(Rq rq) {
+        rq.println("메인 페이지");
     }
 }
